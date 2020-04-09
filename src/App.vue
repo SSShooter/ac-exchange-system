@@ -37,8 +37,20 @@ export default {
   color: #2c3e50;
   max-width: 500px;
   margin: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  min-height: 100vh;
+}
+:root {
+  background-image: url(./img/80202218_p6.png);
 }
 
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #13826f;
+  padding: 50px 0 30px;
+}
 #nav {
   padding: 30px;
 

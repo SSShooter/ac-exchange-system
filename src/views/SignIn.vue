@@ -18,7 +18,7 @@
         :rules="[{ required: true, message: '必填' }]"
       />
       <div style="margin: 16px;">
-        <van-button round block type="info" native-type="submit">登陆</van-button>
+        <van-button round block type="primary" native-type="submit">登陆</van-button>
       </div>
     </van-form>
   </div>
@@ -45,8 +45,3 @@ export default {
   }
 }
 </script>
-<style lang="sass" scoped>
-.title
-    color: #50b37f
-    margin: 50px 0 10px
-</style>

@@ -10,35 +10,36 @@ import MyInfo from '../views/MyInfo.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/', redirect: '/BuyList' },
   {
     path: '/signUp',
     name: 'SignUp',
-    component: SignUp,
+    component: SignUp
   },
   {
     path: '/signin',
     name: 'SignIn',
-    component: SignIn,
+    component: SignIn
   },
   {
     path: '/BuyList',
     name: 'BuyList',
-    component: BuyList,
+    component: BuyList
   },
   {
     path: '/SaleList',
     name: 'SaleList',
-    component: SaleList,
+    component: SaleList
   },
   {
     path: '/createTransaction',
     name: 'CreateTransaction',
-    component: CreateTransaction,
+    component: CreateTransaction
   },
   {
     path: '/myInfo',
     name: 'MyInfo',
-    component: MyInfo,
+    component: MyInfo
   },
   {
     path: '/about',
@@ -47,12 +48,12 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
+      import(/* webpackChunkName: "about" */ '../views/About.vue')
+  }
 ]
 
 const router = new VueRouter({
-  routes,
+  routes
 })
 
 export default router

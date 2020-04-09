@@ -16,9 +16,16 @@
     </van-row>
     <van-list v-model="loading" :finished="finished" finished-text="到底啦" @load="onLoad">
       <div v-for="item in list" :key="item.id" @click="getTurnipDetail(item.id)">
-        发布者：{{item.createUserName}}
-        {{type}}价格：{{item.amount}}
-        {{item.description}}
+        <van-image
+          round
+          width="50px"
+          height="50px"
+          fit="cover"
+          :src="'https://vincenttho.com:8001/' + item.createUserInfo.avatar"
+        />
+        发布者：{{item.transactionInfo.createUserName}}
+        {{type}}价格：{{item.transactionInfo.amount}}
+        {{item.transactionInfo.description}}
       </div>
     </van-list>
   </div>

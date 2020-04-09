@@ -1,10 +1,12 @@
 <template>
   <van-form @submit="onSubmit">
-    <!-- <h1>买卖信息发布</h1>
-    <li>信息发布后其他用户可以看到此信息</li>
-    <li>一位用户查看密码后信息就不会在列表出现啦</li>
-    <li>继续发布相同信息可以在我的帖子中选择重新发布</li>
-    <li>突然涌入大量陌生人，可能是密码被泄漏，请重新发布新交易</li> -->
+    <div class="title">买卖信息发布</div>
+    <div class="attention">
+      <div>信息发布后其他用户可以看到此信息</div>
+      <div>一位用户查看密码后信息就不会在列表出现啦</div>
+      <div>再次发布相同信息可以在我的帖子中选择重新发布</div>
+      <div>若涌入大量陌生玩家，可能是密码被泄漏，建议重新发布新交易</div>
+    </div>
     <van-field name="radio" label="类型">
       <template #input>
         <van-radio-group direction="horizontal" v-model="info.transactionType">
@@ -30,7 +32,7 @@
       :rules="[{ required: true, message: '必填' }]"
     />
     <div style="margin: 16px;">
-      <van-button round block type="info" native-type="submit">发布</van-button>
+      <van-button round block type="primary" native-type="submit">发布</van-button>
     </div>
   </van-form>
 </template>
@@ -41,7 +43,7 @@ export default {
     return {
       info: {
         amount: '',
-        tradingItems: '1',
+        tradingItems: '',
         password: '',
         transactionType: 'BUY'
       }
@@ -59,3 +61,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.attention{
+  padding: 20px;
+}
+</style>
