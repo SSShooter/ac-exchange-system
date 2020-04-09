@@ -2,10 +2,10 @@
   <div>
     <van-row>
       <van-col span="7">
-        <van-field v-model="beginAmount" type="number" placeholder="价格区间最小价格" />
+        <van-field v-model="beginAmount" type="number" placeholder="最低价" />
       </van-col>
       <van-col span="7">
-        <van-field v-model="endAmount" type="number" placeholder="价格区间最大价格" />
+        <van-field v-model="endAmount" type="number" placeholder="最高价" />
       </van-col>
       <van-col span="7">
         <van-field v-model="tradingItems" placeholder="入场费" />

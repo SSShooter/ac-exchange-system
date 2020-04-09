@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Notify } from 'vant'
 import router from './router'
+axios.defaults.baseURL = process.env.VUE_APP_BASEURL
 axios.interceptors.response.use(
   function (response) {
     // 2xx
