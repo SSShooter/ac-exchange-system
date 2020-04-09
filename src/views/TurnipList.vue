@@ -17,7 +17,7 @@
     <van-list v-model="loading" :finished="finished" finished-text="到底啦" @load="onLoad">
       <div v-for="item in list" :key="item.id" @click="getTurnipDetail(item.id)">
         发布者：{{item.createUserName}}
-        买入价格：{{item.amount}}
+        {{type}}价格：{{item.amount}}
       </div>
     </van-list>
   </div>
@@ -25,6 +25,7 @@
 <script>
 import { getTurnipList, getTurnipDetail } from '../api'
 export default {
+  props: ['type'],
   data() {
     return {
       currentPage: 1,
@@ -60,19 +61,24 @@ export default {
       console.log(res)
     },
     async onLoad() {
-      const res = await getTurnipList({
-        currentPage: this.currentPage,
-        transactionType: 'BUY',
-        beginAmount: this.beginAmount || null,
-        endAmount: this.endAmount || null,
-        tradingItems: this.tradingItems || null
-      })
-      if (res.totalPages <= res.currentPage) {
+      try {
+        const res = await getTurnipList({
+          currentPage: this.currentPage,
+          transactionType: this.type,
+          beginAmount: this.beginAmount || null,
+          endAmount: this.endAmount || null,
+          tradingItems: this.tradingItems || null
+        })
+        if (res.totalPages <= res.currentPage) {
+          this.finished = true
+        }
+        this.loading = false
+        console.log(res)
+        this.list = [...this.list, ...res.data]
+      } catch (err) {
+        console.log('err', err)
         this.finished = true
       }
-      this.loading = false
-      console.log(res)
-      this.list = [...this.list, ...res.data]
     }
   }
 }

@@ -40,6 +40,7 @@ export default {
       const res = await login(this.info)
       console.log(res)
       setToken(res.data.token)
+      this.$router.push({ name: 'TurnipList' })
     }
   }
 }

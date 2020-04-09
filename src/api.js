@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Notify } from 'vant'
+import router from './router'
 axios.interceptors.response.use(
   function (response) {
     // 2xx
@@ -8,6 +9,11 @@ axios.interceptors.response.use(
   },
   function (error) {
     // 非 2xx
+    console.log('error', error.response)
+    if (error.response.status === 401) {
+      router.push({ name: 'SignIn' })
+      return Notify({ type: 'danger', message: '未登录' })
+    }
     if (error.response.data) {
       return Notify({ type: 'danger', message: error.response.data.msg })
     } else return Notify({ type: 'danger', message: '网络错误' })

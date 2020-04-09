@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
 import SignUp from '../views/SignUp.vue'
 import SignIn from '../views/SignIn.vue'
-import TurnipList from '../views/TurnipList.vue'
+import BuyList from '../views/BuyList.vue'
+import SaleList from '../views/SaleList.vue'
 import CreateTransaction from '../views/CreateTransaction.vue'
 import MyInfo from '../views/MyInfo.vue'
 
@@ -21,9 +22,14 @@ const routes = [
     component: SignIn,
   },
   {
-    path: '/turnipList',
-    name: 'TurnipList',
-    component: TurnipList,
+    path: '/BuyList',
+    name: 'BuyList',
+    component: BuyList,
+  },
+  {
+    path: '/SaleList',
+    name: 'SaleList',
+    component: SaleList,
   },
   {
     path: '/createTransaction',
