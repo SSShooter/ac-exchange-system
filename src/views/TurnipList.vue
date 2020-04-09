@@ -44,7 +44,7 @@ export default {
       this.currentPage = 1
       this.finished = false
       this.loading = true
-
+      this.list = []
       this.onLoad()
     },
     async getTurnipDetail(id) {
