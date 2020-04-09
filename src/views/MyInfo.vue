@@ -6,15 +6,15 @@
         name="邮箱"
         label="邮箱"
         placeholder="邮箱"
-        :rules="[{ required: true, message: 'email is required' }]"
+        :rules="[{ required: true, message: '必填' }]"
       />
-      <van-field
+      <!-- <van-field
         v-model="info.password"
         type="password"
         name="密码"
         label="密码"
         placeholder="密码"
-        :rules="[{ required: true, message: 'Password is required' }]"
+        :rules="[{ required: true, message: '必填' }]"
       />
       <van-field
         v-model="info.rePassword"
@@ -22,14 +22,14 @@
         name="重新输入密码"
         label="重新输入密码"
         placeholder="重新输入密码"
-        :rules="[{ required: true, message: 'rePassword is required' }]"
-      />
+        :rules="[{ required: true, message: '必填' }]"
+      /> -->
       <van-field
         v-model="info.userName"
         name="用户名"
         label="用户名"
         placeholder="用户名"
-        :rules="[{ required: true, message: 'userName is required' }]"
+        :rules="[{ required: true, message: '必填' }]"
       />
       <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="SW" />
       <div style="margin: 16px;">

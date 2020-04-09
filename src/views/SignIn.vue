@@ -7,7 +7,7 @@
         name="email"
         label="email"
         placeholder="email"
-        :rules="[{ required: true, message: 'email is required' }]"
+        :rules="[{ required: true, message: '必填' }]"
       />
       <van-field
         v-model="info.password"
@@ -15,7 +15,7 @@
         name="Password"
         label="Password"
         placeholder="Password"
-        :rules="[{ required: true, message: 'Password is required' }]"
+        :rules="[{ required: true, message: '必填' }]"
       />
       <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">登陆</van-button>
@@ -40,7 +40,7 @@ export default {
       const res = await login(this.info)
       console.log(res)
       setToken(res.data.token)
-      this.$router.push({ name: 'TurnipList' })
+      this.$router.push({ name: 'BuyList' })
     }
   }
 }

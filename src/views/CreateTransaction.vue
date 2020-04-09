@@ -1,5 +1,6 @@
 <template>
   <van-form @submit="onSubmit">
+    <h1>买卖信息发布</h1>
     <span>如果突然涌入大量陌生人，可能是密码被泄漏，请重新发布新交易</span>
     <van-field name="radio" label="类型">
       <template #input>
@@ -14,7 +15,7 @@
       name="大头菜价格"
       label="大头菜价格"
       placeholder="大头菜价格"
-      :rules="[{ required: true, message: 'userName is required' }]"
+      :rules="[{ required: true, message: '必填' }]"
     />
     <van-field v-model="info.tradingItems" name="入场费" label="入场费" placeholder="入场费" />
     <van-field
@@ -22,7 +23,7 @@
       name="密码"
       label="密码"
       placeholder="密码"
-      :rules="[{ required: true, message: 'userName is required' }]"
+      :rules="[{ required: true, message: '必填' }]"
     />
     <div style="margin: 16px;">
       <van-button round block type="info" native-type="submit">发布</van-button>
