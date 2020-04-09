@@ -1,24 +1,39 @@
 <template>
   <div>
-    <div class="title">没有名字的动森交易系统</div>
     <van-form @submit="onSubmit">
       <van-field
         v-model="info.email"
-        name="email"
-        label="email"
-        placeholder="email"
+        name="邮箱"
+        label="邮箱"
+        placeholder="邮箱"
         :rules="[{ required: true, message: 'email is required' }]"
       />
       <van-field
         v-model="info.password"
         type="password"
-        name="Password"
-        label="Password"
-        placeholder="Password"
+        name="密码"
+        label="密码"
+        placeholder="密码"
         :rules="[{ required: true, message: 'Password is required' }]"
       />
+      <van-field
+        v-model="info.rePassword"
+        type="password"
+        name="重新输入密码"
+        label="重新输入密码"
+        placeholder="重新输入密码"
+        :rules="[{ required: true, message: 'rePassword is required' }]"
+      />
+      <van-field
+        v-model="info.userName"
+        name="用户名"
+        label="用户名"
+        placeholder="用户名"
+        :rules="[{ required: true, message: 'userName is required' }]"
+      />
+      <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="SW" />
       <div style="margin: 16px;">
-        <van-button round block type="info" native-type="submit">登陆</van-button>
+        <van-button round block type="info" native-type="submit">保存</van-button>
       </div>
     </van-form>
   </div>
