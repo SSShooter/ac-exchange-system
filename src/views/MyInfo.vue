@@ -1,5 +1,9 @@
 <template>
   <div>
+    <van-cell-group>
+      <van-cell title="我的帖子" is-link />
+    </van-cell-group>
+
     <van-form @submit="onSubmit">
       <van-field
         v-model="info.email"
@@ -23,7 +27,7 @@
         label="重新输入密码"
         placeholder="重新输入密码"
         :rules="[{ required: true, message: '必填' }]"
-      /> -->
+      />-->
       <van-field
         v-model="info.userName"
         name="用户名"
@@ -61,6 +65,6 @@ export default {
 </script>
 <style lang="sass" scoped>
 .title
-    color: #50b37f
-    margin: 50px 0 10px
+  color: #50b37f
+  margin: 50px 0 10px
 </style>

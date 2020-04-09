@@ -1,7 +1,10 @@
 <template>
   <van-form @submit="onSubmit">
-    <h1>买卖信息发布</h1>
-    <span>如果突然涌入大量陌生人，可能是密码被泄漏，请重新发布新交易</span>
+    <!-- <h1>买卖信息发布</h1>
+    <li>信息发布后其他用户可以看到此信息</li>
+    <li>一位用户查看密码后信息就不会在列表出现啦</li>
+    <li>继续发布相同信息可以在我的帖子中选择重新发布</li>
+    <li>突然涌入大量陌生人，可能是密码被泄漏，请重新发布新交易</li> -->
     <van-field name="radio" label="类型">
       <template #input>
         <van-radio-group direction="horizontal" v-model="info.transactionType">
@@ -17,6 +20,7 @@
       placeholder="大头菜价格"
       :rules="[{ required: true, message: '必填' }]"
     />
+    <van-field v-model="info.description" name="描述" label="描述" placeholder="描述" />
     <van-field v-model="info.tradingItems" name="入场费" label="入场费" placeholder="入场费" />
     <van-field
       v-model="info.password"

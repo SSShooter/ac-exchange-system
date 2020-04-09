@@ -13,11 +13,12 @@ axios.interceptors.response.use(
     console.log('error', error.response)
     if (error.response.status === 401) {
       router.push({ name: 'SignIn' })
-      return Notify({ type: 'danger', message: '未登录' })
+      Notify({ type: 'danger', message: '未登录' })
     }
     if (error.response.data) {
-      return Notify({ type: 'danger', message: error.response.data.msg })
-    } else return Notify({ type: 'danger', message: '网络错误' })
+      Notify({ type: 'danger', message: error.response.data.msg })
+    } else Notify({ type: 'danger', message: '网络错误' })
+    return Promise.reject(error)
   }
 )
 if (localStorage.token) {
