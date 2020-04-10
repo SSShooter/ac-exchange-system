@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <van-row style="border-bottom: #148270 1px solid;">
+  <div class="list-page">
+    <van-row style="border-bottom: #148270 1px solid">
       <van-col span="7">
         <van-field v-model="beginAmount" type="number" placeholder="最低价" />
       </van-col>
@@ -11,10 +11,10 @@
         <van-field v-model="tradingItems" placeholder="入场费" />
       </van-col>
       <van-col span="3" style="line-height:40px;">
-        <van-button type="primary" size="mini" @click="search">搜！</van-button>
+        <div type="primary" size="mini" @click="search">搜！</div>
       </van-col>
     </van-row>
-    <van-list v-model="loading" :finished="finished" finished-text="到底啦" @load="onLoad">
+    <van-list class="list" v-model="loading" :finished="finished" finished-text="到底啦" @load="onLoad">
       <div v-for="item in list" class="list-item" :key="item.id" @click="getTurnipDetail(item.id)">
         <van-image
           round
@@ -107,24 +107,29 @@ export default {
 }
 </script>
 <style lang="scss">
-.list-item {
-  padding: 12px 18px;
-  display: flex;
-  border-bottom: #148270 1px dotted;
-  .info {
-    padding-left: 18px;
-  }
-  .update-date {
-    color: gray;
-    padding-left: 12px;
-    font-size: 0.8em;
-  }
-  .price,
-  .cost {
-    color: #cf3438;
-  }
-  .description {
-    color: #cf7b0a;
+.list-page{
+  width: 100%;
+}
+.list {
+  .list-item {
+    padding: 12px 18px;
+    display: flex;
+    border-bottom: #148270 1px dotted;
+    .info {
+      padding-left: 18px;
+    }
+    .update-date {
+      color: gray;
+      padding-left: 12px;
+      font-size: 0.8em;
+    }
+    .price,
+    .cost {
+      color: #cf3438;
+    }
+    .description {
+      color: #cf7b0a;
+    }
   }
 }
 </style>
