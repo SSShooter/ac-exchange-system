@@ -27,10 +27,10 @@
       v-model="info.userName"
       name="用户名"
       label="用户名"
-      placeholder="用户名"
+      placeholder="建议使用游戏 ID"
       :rules="[{ required: true, message: 'userName is required' }]"
     />
-    <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="SW" />
+    <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="switch id 选填" />
     <div style="margin: 16px;">
       <van-button round block type="info" native-type="submit">Submit</van-button>
     </div>

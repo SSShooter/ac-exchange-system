@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-row>
+    <van-row style="border-bottom: #148270 1px solid;">
       <van-col span="7">
         <van-field v-model="beginAmount" type="number" placeholder="最低价" />
       </van-col>
@@ -15,7 +15,7 @@
       </van-col>
     </van-row>
     <van-list v-model="loading" :finished="finished" finished-text="到底啦" @load="onLoad">
-      <div v-for="item in list" :key="item.id" @click="getTurnipDetail(item.id)">
+      <div v-for="item in list" class="list-item" :key="item.id" @click="getTurnipDetail(item.id)">
         <van-image
           round
           width="50px"
@@ -23,9 +23,23 @@
           fit="cover"
           :src="'https://vincenttho.com:8001/' + item.createUserInfo.avatar"
         />
-        发布者：{{item.transactionInfo.createUserName}}
-        {{type}}价格：{{item.transactionInfo.amount}}
-        {{item.transactionInfo.description}}
+        <div class="info">
+          <div>
+            {{item.transactionInfo.createUserName}}
+            <span
+              class="update-date"
+            >{{item.transactionInfo.updateDate}}</span>
+          </div>
+          <div>
+            {{type==='BUY'? '买入' :'卖出'}}价格：
+            <span class="price">{{item.transactionInfo.amount}}</span>
+          </div>
+          <div>
+            入场费：
+            <span class="cost">{{item.transactionInfo.tradingItems || '免费'}}</span>
+          </div>
+          <div class="van-ellipsis description">{{item.transactionInfo.description}}</div>
+        </div>
       </div>
     </van-list>
   </div>
@@ -80,6 +94,7 @@ export default {
         if (res.totalPages <= res.currentPage) {
           this.finished = true
         }
+        this.currentPage += 1
         this.loading = false
         console.log(res)
         this.list = [...this.list, ...res.data]
@@ -91,3 +106,25 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.list-item {
+  padding: 12px 18px;
+  display: flex;
+  border-bottom: #148270 1px dotted;
+  .info {
+    padding-left: 18px;
+  }
+  .update-date {
+    color: gray;
+    padding-left: 12px;
+    font-size: 0.8em;
+  }
+  .price,
+  .cost {
+    color: #cf3438;
+  }
+  .description {
+    color: #cf7b0a;
+  }
+}
+</style>

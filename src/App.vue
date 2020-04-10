@@ -18,13 +18,21 @@
 export default {
   data() {
     return {
-      active: 0
+      active: null
+    }
+  },
+  watch: {
+    '$route.name': {
+      handler: 'setTab',
+      immediate: true
     }
   },
   methods: {
     tabChange(val) {
-      console.log(val)
       this.$router.push({ name: val })
+    },
+    setTab(name) {
+      this.active = name
     }
   }
 }
@@ -34,7 +42,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #82500D;
   max-width: 500px;
   margin: auto;
   background-color: rgba(255, 255, 255, 0.8);
