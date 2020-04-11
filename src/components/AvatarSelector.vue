@@ -1,6 +1,6 @@
 <template>
   <van-overlay :show="show" @click="show = false" class="fixed">
-    <div class="wrapper" @click.stop>
+    <div class="wrapper">
       <div class="block">
         <van-grid square>
           <van-grid-item v-for="name in avatarList" :key="name">
@@ -60,8 +60,9 @@ export default {
 
 .block {
   width: 300px;
-  height: 80%;
-  background-color: #fff;
+  height: 300px;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 9999;
 }
 </style>

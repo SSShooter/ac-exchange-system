@@ -11,10 +11,10 @@
       />
       <div>点击选择头像</div>
     </div>
-
     <van-form @submit="onSubmit">
       <van-field
         v-model="info.email"
+        disabled
         name="邮箱"
         label="邮箱"
         placeholder="邮箱"
@@ -28,6 +28,7 @@
         :rules="[{ required: true, message: '必填' }]"
       />
       <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="SW" />
+      <van-field v-model="info.islandName" name="岛名称" label="岛名称" placeholder="岛名称" />
       <van-field
         readonly
         clickable
@@ -63,7 +64,8 @@
         />
       </van-popup>
       <van-cell-group>
-        <van-cell title="我的帖子" is-link />
+        <van-cell @click="$router.push('MyList')" title="我的帖子" is-link />
+        <van-cell @click="$router.push('TransactionDetail')" title="当前交易" is-link />
       </van-cell-group>
       <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">保存</van-button>
@@ -74,7 +76,7 @@
   </div>
 </template>
 <script>
-import { getAvatarList, getMyInfo, patchMyInfo } from '../api'
+import { getAvatarList, patchMyInfo } from '../api'
 import AvatarSelector from '../components/AvatarSelector'
 export default {
   data() {
@@ -96,14 +98,15 @@ export default {
   components: { AvatarSelector },
   mounted() {
     this.fetchAvatar()
-    getMyInfo().then(res => {
-      console.log(res)
-      this.info = res.data
-    })
+    this.info = this.$store.state.info
+  },
+  watch: {
+    '$store.state.info': function(val) {
+      this.info = val
+    }
   },
   methods: {
     async onSubmit(values) {
-      console.log(values)
       await patchMyInfo(this.info)
       this.$notify({ type: 'success', message: '保存成功' })
     },

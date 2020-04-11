@@ -14,9 +14,21 @@
         <div type="primary" size="mini" @click="search">搜！</div>
       </van-col>
     </van-row>
-    <van-list class="list" v-model="loading" :finished="finished" finished-text="到底啦" @load="onLoad">
-      <div v-for="item in list" class="list-item" :key="item.id" @click="getTurnipDetail(item.id)">
+    <van-list
+      class="list"
+      v-model="loading"
+      :finished="finished"
+      finished-text="到底啦"
+      @load="onLoad"
+    >
+      <div
+        v-for="item in list"
+        class="list-item"
+        :key="item.id"
+        @click="getTurnipDetail(item.transactionInfo.id,item.createUserInfo.userId)"
+      >
         <van-image
+          class="avatar"
           round
           width="50px"
           height="50px"
@@ -45,7 +57,7 @@
   </div>
 </template>
 <script>
-import { getTurnipList, getTurnipDetail } from '../api'
+import { getTurnipList, getCurrentTransaction } from '../api'
 export default {
   props: ['type'],
   data() {
@@ -69,18 +81,21 @@ export default {
       this.list = []
       this.onLoad()
     },
-    async getTurnipDetail(id) {
+    async getTurnipDetail(id, uerId) {
+      if (uerId === this.$store.state.info.userId) {
+        // 看自己
+        return this.$router.push({ name: 'TransactionDetail', query: { id } })
+      }
+      const res = await getCurrentTransaction()
+      if (res.data) {
+        return this.$notify({ type: 'danger', message: '你有正在交易的帖子' })
+      }
       await this.$dialog.confirm({
         title: '注意',
         message:
           '一定时间内只能查看一条密码，请谨慎选择，查看密码后请不要传播密码'
       })
-      const res = await getTurnipDetail(id)
-      this.$dialog.alert({
-        title: '起飞啦',
-        message: '密码是' + res.data.password
-      })
-      console.log(res)
+      this.$router.push({ name: 'TransactionDetail', query: { id } })
     },
     async onLoad() {
       try {
@@ -107,7 +122,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.list-page{
+.list-page {
   width: 100%;
 }
 .list {
@@ -115,6 +130,9 @@ export default {
     padding: 12px 18px;
     display: flex;
     border-bottom: #148270 1px dotted;
+    .avatar {
+      flex-shrink: 0;
+    }
     .info {
       padding-left: 18px;
     }

@@ -17,6 +17,9 @@
         placeholder="Password"
         :rules="[{ required: true, message: '必填' }]"
       />
+      <div style="margin: 16px;text-align:center;">
+        <router-link style="color:#cf7b0a;" :to="{ name: 'SignUp'}">还没有账号？点这里注册！</router-link>
+      </div>
       <div style="margin: 16px;">
         <van-button round block type="primary" native-type="submit">登陆</van-button>
       </div>

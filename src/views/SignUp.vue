@@ -20,6 +20,13 @@
         :rules="[{ required: true, message: '必填' }]"
       />
       <van-field
+        v-model="info.userName"
+        name="用户名"
+        label="用户名"
+        placeholder="建议使用游戏 ID"
+        :rules="[{ required: true, message: '必填' }]"
+      />
+      <van-field
         v-model="info.password"
         type="password"
         name="密码"
@@ -35,18 +42,11 @@
         placeholder="重新输入密码"
         :rules="[{ required: true, message: '必填' }]"
       />
-      <van-field
-        v-model="info.userName"
-        name="用户名"
-        label="用户名"
-        placeholder="建议使用游戏 ID"
-        :rules="[{ required: true, message: '必填' }]"
-      />
-      <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="switch id 选填" />
+      <!-- <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="switch id 选填" />
       <van-field v-model="info.hemisphere" name="半球" label="半球" placeholder="南半球啊？北半球？ 选填" />
-      <van-field v-model="info.fruit" name="水果" label="水果" placeholder="本岛特产 选填" />
+      <van-field v-model="info.fruit" name="水果" label="水果" placeholder="本岛特产 选填" /> -->
       <div style="margin: 16px;">
-        <van-button round block type="info" native-type="submit">Submit</van-button>
+        <van-button round block type="info" native-type="submit">注册</van-button>
       </div>
     </van-form>
     <AvatarSelector ref="AvatarSelector" @avatarChange="name => info.avatar = name" />
@@ -59,11 +59,11 @@ export default {
   data() {
     return {
       info: {
-        email: '472356884@qq.com',
-        userName: '1',
-        password: '1',
-        rePassword: '1',
-        nintendoAccount: '1',
+        email: '',
+        userName: '',
+        password: '',
+        rePassword: '',
+        nintendoAccount: '',
         hemisphere: '',
         fruit: '',
         avatar: '61.png'
@@ -73,7 +73,6 @@ export default {
   components: { AvatarSelector },
   methods: {
     async onSubmit(values) {
-      console.log('submit', values)
       await register(this.info)
       this.$router.push({ name: 'SignIn' })
     },

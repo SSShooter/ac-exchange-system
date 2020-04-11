@@ -3,12 +3,12 @@ import { Notify } from 'vant'
 import router from './router'
 axios.defaults.baseURL = process.env.VUE_APP_BASEURL
 axios.interceptors.response.use(
-  function (response) {
+  function(response) {
     // 2xx
     console.log('response', response)
     return response.data
   },
-  function (error) {
+  function(error) {
     // 非 2xx
     console.log('error', error.response)
     if (error.response.status === 401) {
@@ -57,4 +57,16 @@ export function getMyInfo() {
 
 export function patchMyInfo(data) {
   return axios.patch('/ac/api/user/myInfo', data)
+}
+
+export function getMyList(params) {
+  return axios.get('/ac/api/transaction/turnip/myList', { params })
+}
+
+export function getCurrentTransaction() {
+  return axios.get('/ac/api/transaction/turnip/myTransaction')
+}
+
+export function nextTransaction(id) {
+  return axios.patch('/ac/api/transaction/turnip/nextTransaction/' + id)
 }

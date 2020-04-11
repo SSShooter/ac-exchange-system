@@ -1,14 +1,10 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>-->
-    <router-view />
+    <router-view class="main" />
     <van-tabbar v-model="active" @change="tabChange" class="navi">
       <van-tabbar-item name="BuyList" icon="paid">买</van-tabbar-item>
       <van-tabbar-item name="SaleList" icon="shop">卖</van-tabbar-item>
-      <van-tabbar-item name="TurnipList3" icon="exchange">换物</van-tabbar-item>
+      <van-tabbar-item name="GoodsExchange" icon="exchange">换物</van-tabbar-item>
       <van-tabbar-item name="CreateTransaction" icon="friends-o">发布</van-tabbar-item>
       <van-tabbar-item name="MyInfo" icon="user-o">我</van-tabbar-item>
     </van-tabbar>
@@ -26,6 +22,9 @@ export default {
       handler: 'setTab',
       immediate: true
     }
+  },
+  mounted() {
+    this.$store.dispatch('fetchInfo')
   },
   methods: {
     tabChange(val) {
@@ -51,7 +50,10 @@ export default {
 :root {
   background-image: url(./img/80202218_p6.png);
 }
-
+.main {
+  // 抵消tab的fixed
+  margin-bottom: 50px;
+}
 .title {
   font-size: 20px;
   font-weight: bold;

@@ -6,6 +6,9 @@ import BuyList from '../views/BuyList.vue'
 import SaleList from '../views/SaleList.vue'
 import CreateTransaction from '../views/CreateTransaction.vue'
 import MyInfo from '../views/MyInfo.vue'
+import MyList from '../views/MyList.vue'
+import GoodsExchange from '../views/GoodsExchange.vue'
+import TransactionDetail from '../views/TransactionDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -40,6 +43,21 @@ const routes = [
     path: '/myInfo',
     name: 'MyInfo',
     component: MyInfo
+  },
+  {
+    path: '/myList',
+    name: 'MyList',
+    component: MyList
+  },
+  {
+    path: '/transactionDetail',
+    name: 'TransactionDetail',
+    component: TransactionDetail
+  },
+  {
+    path: '/goodsExchange',
+    name: 'GoodsExchange',
+    component: GoodsExchange
   },
   {
     path: '/about',
