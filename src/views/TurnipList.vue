@@ -28,6 +28,7 @@
         @click="getTurnipDetail(item.transactionInfo.id,item.createUserInfo.userId)"
       >
         <van-image
+          @click.stop="showIDCard(item.createUserInfo.userId)"
           class="avatar"
           round
           width="50px"
@@ -54,10 +55,12 @@
         </div>
       </div>
     </van-list>
+    <IDCard ref="idcard" :id="currentId" />
   </div>
 </template>
 <script>
 import { getTurnipList, getCurrentTransaction } from '../api'
+import IDCard from '../components/IDCard'
 export default {
   props: ['type'],
   data() {
@@ -68,12 +71,17 @@ export default {
       tradingItems: null,
       finished: false,
       loading: false,
-      list: []
+      list: [],
+      currentId: null
     }
   },
+  components: { IDCard },
   mounted() {},
   methods: {
-    onSubmit(values) {},
+    showIDCard(id) {
+      this.currentId = id
+      this.$refs.idcard.show = true
+    },
     search() {
       this.currentPage = 1
       this.finished = false

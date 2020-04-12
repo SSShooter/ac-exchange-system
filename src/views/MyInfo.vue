@@ -28,6 +28,7 @@
         :rules="[{ required: true, message: '必填' }]"
       />
       <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="SW" />
+      <!-- 限制number -->
       <van-field v-model="info.islandName" name="岛名称" label="岛名称" placeholder="岛名称" />
       <van-field
         readonly
@@ -66,6 +67,16 @@
       <van-cell-group>
         <van-cell @click="$router.push('MyList')" title="我的帖子" is-link />
         <van-cell @click="$router.push('TransactionDetail')" title="当前交易" is-link />
+        <van-cell
+          @click="windowOpen('https://elxris.github.io/Turnip-Calculator/')"
+          title="大头菜价格预测"
+          is-link
+        />
+        <van-cell
+          @click="windowOpen('https://wiki.biligame.com/dongsen/%E9%A6%96%E9%A1%B5')"
+          title="中文 wiki"
+          is-link
+        />
       </van-cell-group>
       <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">保存</van-button>
@@ -127,6 +138,9 @@ export default {
     selectAvatar() {
       console.log(this)
       this.$refs.AvatarSelector.show = true
+    },
+    windowOpen(url) {
+      window.open(url)
     }
   }
 }

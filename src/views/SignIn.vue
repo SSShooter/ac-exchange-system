@@ -43,6 +43,7 @@ export default {
       const res = await login(this.info)
       console.log(res)
       setToken(res.data.token)
+      this.$store.dispatch('fetchInfo')
       this.$router.push({ name: 'BuyList' })
     }
   }

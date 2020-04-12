@@ -8,18 +8,25 @@
       <van-cell title="类型" :value="this.info.transactionType==='BUY'?'买入':'卖出'" />
       <van-cell :title="this.info.transactionType==='BUY'?'买入价格':'卖出价格'" :value="this.info.amount" />
       <van-cell title="入场费" :value="this.info.tradingItems" />
-      <van-cell title="对方ID" :value="this.info.transactionUserId" />
+      <van-cell
+        title="对方ID"
+        :value="this.info.transactionUserId || '未进行交易'"
+        is-link
+        @click="$refs.idcard.show = true"
+      />
       <van-cell title="登岛密码" :value="this.info.password" />
       <!-- <van-cell title="Cell title" value="Content" label="Description" /> -->
     </van-cell-group>
     <div style="margin:15px;">
       <van-button round block type="info" native-type="submit" @click="nextTransaction">下一次交易</van-button>
     </div>
+    <IDCard ref="idcard" :id="info.transactionUserId" />
   </div>
 </template>
 
 <script>
 import { getTurnipDetail, getCurrentTransaction, nextTransaction } from '../api'
+import IDCard from '../components/IDCard'
 export default {
   data() {
     return {
@@ -36,6 +43,7 @@ export default {
       }
     }
   },
+  components: { IDCard },
   async mounted() {
     if (this.$route.query.id) {
       this.getTurnipDetail()

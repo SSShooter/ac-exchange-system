@@ -59,6 +59,10 @@ export function patchMyInfo(data) {
   return axios.patch('/ac/api/user/myInfo', data)
 }
 
+export function getUserInfo(id) {
+  return axios.get('/ac/api/user/' + id)
+}
+
 export function getMyList(params) {
   return axios.get('/ac/api/transaction/turnip/myList', { params })
 }

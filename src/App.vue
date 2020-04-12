@@ -61,4 +61,12 @@ export default {
   color: #13826f;
   padding: 50px 0 30px;
 }
+
+.overlay-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 </style>
