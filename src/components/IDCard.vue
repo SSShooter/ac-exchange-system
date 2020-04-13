@@ -1,8 +1,8 @@
 <template>
   <van-overlay :show="show" @click="show = false">
-    <!-- TODO loading 标志 -->
     <div class="overlay-wrapper">
-      <canvas id="idcard" width="400" height="250"></canvas>
+      <van-loading v-if="loading" />
+      <canvas v-show="!loading" id="idcard" width="400" height="250"></canvas>
     </div>
   </van-overlay>
 </template>
@@ -15,20 +15,24 @@ import { roundRect } from '../util'
 export default {
   props: ['id'],
   data() {
-    return { show: false }
+    return { show: false, loading: true }
   },
   watch: {
     async id(val) {
       if (!val) return
+      this.loading = true
       const info = (await getUserInfo(val)).data
       console.log(info)
-      var ctx = document.getElementById('idcard').getContext('2d')
+      const dom = document.getElementById('idcard')
+      const width = document.querySelector('#app').offsetWidth
+      const scale = ((400 / 414) * width) / 400
+      dom.style.transform = `scale(${scale},${scale})`
+      const ctx = dom.getContext('2d')
       const bgI = await this.loadImage(bg)
       const titleI = await this.loadImage(title)
       const avatar = await this.loadImage(
         'https://vincenttho.com:8001/' + info.avatar
       )
-
       ctx.drawImage(bgI, 0, 0)
       ctx.drawImage(avatar, 50, 50, 80, 80)
       ctx.drawImage(titleI, 10, 120, 160, 80)
@@ -59,7 +63,7 @@ export default {
         190,
         220
       )
-      // ctx.strokeText(info.hemisphere, 30, 90)
+      this.loading = false
     }
   },
   methods: {

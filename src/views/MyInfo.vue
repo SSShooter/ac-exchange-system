@@ -27,7 +27,13 @@
         placeholder="用户名"
         :rules="[{ required: true, message: '必填' }]"
       />
-      <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="SW" />
+      <van-field
+        v-model="info.nintendoAccount"
+        name="SW"
+        label="SW"
+        placeholder="SW"
+        :rules="[{ validator: swValidator, message: '好像不对哦' }]"
+      />
       <!-- 限制number -->
       <van-field v-model="info.islandName" name="岛名称" label="岛名称" placeholder="岛名称" />
       <van-field
@@ -120,6 +126,12 @@ export default {
     async onSubmit(values) {
       await patchMyInfo(this.info)
       this.$notify({ type: 'success', message: '保存成功' })
+    },
+    swValidator(val) {
+      if (!val || val.match(/^[0-9]{12}$/)) return true
+      else {
+        return false
+      }
     },
     onConfirm1(value) {
       this.info.hemisphere = value
