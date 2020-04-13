@@ -3,6 +3,8 @@
     <div class="overlay-wrapper">
       <van-loading v-if="loading" />
       <canvas v-show="!loading" id="idcard" width="400" height="250"></canvas>
+      <!-- TODO canvas 转图片 -->
+      <!-- TODO 改图标 -->
     </div>
   </van-overlay>
 </template>
@@ -44,14 +46,14 @@ export default {
       roundRect(ctx, 280, 150, 100, 25, 5, true, false)
       roundRect(ctx, 180, 200, 200, 25, 5, true, false)
       ctx.fillStyle = 'black'
-      ctx.font = '15px Sans-serif'
+      ctx.font = '15px mainFont'
       ctx.fillText('名字', 180, 45)
       ctx.fillText('岛名', 180, 95)
       ctx.fillText('半球', 180, 145)
       ctx.fillText('特产水果', 280, 145)
       ctx.fillText('NS号', 180, 195)
 
-      ctx.font = 'bold 18px Sans-serif'
+      ctx.font = '18px mainFont'
       ctx.fillText(info.userName || '', 190, 70)
       ctx.fillText(info.islandName || '', 190, 120)
       ctx.fillText(info.hemisphere || '', 190, 170)

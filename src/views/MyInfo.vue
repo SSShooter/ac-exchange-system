@@ -72,7 +72,7 @@
       </van-popup>
       <van-cell-group>
         <van-cell @click="$router.push('MyList')" title="我的帖子" is-link />
-        <van-cell @click="$router.push('TransactionDetail')" title="当前交易" is-link />
+        <van-cell @click="toCurrentTransaction" title="当前交易" is-link />
         <van-cell
           @click="windowOpen('https://elxris.github.io/Turnip-Calculator/')"
           title="大头菜价格预测"
@@ -93,7 +93,7 @@
   </div>
 </template>
 <script>
-import { getAvatarList, patchMyInfo } from '../api'
+import { getAvatarList, patchMyInfo, getCurrentTransaction } from '../api'
 import AvatarSelector from '../components/AvatarSelector'
 export default {
   data() {
@@ -126,6 +126,13 @@ export default {
     async onSubmit(values) {
       await patchMyInfo(this.info)
       this.$notify({ type: 'success', message: '保存成功' })
+    },
+    async toCurrentTransaction() {
+      const res = await getCurrentTransaction()
+      if (!res.data) {
+        return this.$notify({ type: 'warning', message: '无正在交易的帖子' })
+      }
+      this.$router.push('TransactionDetail')
     },
     swValidator(val) {
       if (!val || val.match(/^[0-9]{12}$/)) return true

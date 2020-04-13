@@ -37,8 +37,12 @@ export default {
 }
 </script>
 <style lang="scss">
+@font-face {
+  font-family: 'mainFont';
+  src: url('./fonts/SourceHanSansCN-Light.otf');
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  // font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #82500d;
@@ -46,6 +50,7 @@ export default {
   margin: auto;
   background-color: rgba(255, 255, 255, 0.8);
   min-height: 100vh;
+  font-family: mainFont, sans-serif;
 }
 :root {
   background-image: url(./img/80202218_p6.png);
