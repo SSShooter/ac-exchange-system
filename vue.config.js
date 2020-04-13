@@ -5,9 +5,9 @@ module.exports = {
         target: 'http://122.51.47.205',
         pathRewrite: { '^/ac': 'ac-dev' },
         ws: true,
-        changeOrigin: true
-      }
-    }
+        changeOrigin: true,
+      },
+    },
   },
   css: {
     loaderOptions: {
@@ -15,9 +15,15 @@ module.exports = {
         modifyVars: {
           // overide with less vars
           'button-primary-background-color': '#13826f',
-          blue: '#13826f'
-        }
-      }
-    }
-  }
+          blue: '#13826f',
+        },
+      },
+    },
+  },
+  pwa: {
+    workboxOptions: {
+      skipWaiting: true,
+      clientsClaim: true,
+    },
+  },
 }

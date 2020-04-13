@@ -4,17 +4,17 @@
     <van-form @submit="onSubmit">
       <van-field
         v-model="info.email"
-        name="email"
-        label="email"
-        placeholder="email"
+        name="邮箱"
+        label="邮箱"
+        placeholder="邮箱"
         :rules="[{ required: true, message: '必填' }]"
       />
       <van-field
         v-model="info.password"
         type="password"
-        name="Password"
-        label="Password"
-        placeholder="Password"
+        name="密码"
+        label="密码"
+        placeholder="密码"
         :rules="[{ required: true, message: '必填' }]"
       />
       <div style="margin: 16px;text-align:center;">
@@ -28,6 +28,7 @@
 </template>
 <script>
 import { login, setToken } from '../api'
+import md5 from 'blueimp-md5'
 export default {
   data() {
     return {
@@ -39,8 +40,10 @@ export default {
   },
   methods: {
     async onSubmit(values) {
-      console.log('submit', values)
-      const res = await login(this.info)
+      const res = await login({
+        email: this.info.email,
+        password: md5(this.info.password)
+      })
       console.log(res)
       setToken(res.data.token)
       this.$store.dispatch('fetchInfo')

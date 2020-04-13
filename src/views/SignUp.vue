@@ -44,7 +44,7 @@
       />
       <!-- <van-field v-model="info.nintendoAccount" name="SW" label="SW" placeholder="switch id 选填" />
       <van-field v-model="info.hemisphere" name="半球" label="半球" placeholder="南半球啊？北半球？ 选填" />
-      <van-field v-model="info.fruit" name="水果" label="水果" placeholder="本岛特产 选填" /> -->
+      <van-field v-model="info.fruit" name="水果" label="水果" placeholder="本岛特产 选填" />-->
       <div style="margin: 16px;">
         <van-button round block type="info" native-type="submit">注册</van-button>
       </div>
@@ -55,6 +55,7 @@
 <script>
 import { register } from '../api'
 import AvatarSelector from '../components/AvatarSelector'
+import md5 from 'blueimp-md5'
 export default {
   data() {
     return {
@@ -73,7 +74,10 @@ export default {
   components: { AvatarSelector },
   methods: {
     async onSubmit(values) {
-      await register(this.info)
+      const password = md5(this.info.password)
+      const rePassword = md5(this.info.rePassword)
+      await register({ ...this.info, password, rePassword })
+      this.$notify({ type: 'success', message: '注册成功' })
       this.$router.push({ name: 'SignIn' })
     },
     selectAvatar() {
