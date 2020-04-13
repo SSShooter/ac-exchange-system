@@ -1,22 +1,21 @@
 <template>
-  <van-overlay :show="show" @click="show = false" class="fixed">
-    <div class="wrapper">
-      <div class="block">
-        <van-grid square>
-          <van-grid-item v-for="name in avatarList" :key="name">
-            <van-image
-              @click="selectAvatar(name)"
-              round
-              width="100%"
-              height="100%"
-              fit="cover"
-              :src="'https://vincenttho.com:8001/' + name"
-            />
-          </van-grid-item>
-        </van-grid>
-      </div>
+  <div v-if="show" class="avatar-selector">
+    <van-nav-bar title="头像选择" left-text="返回" left-arrow @click-left="show = false" class="nav" />
+    <div class="content">
+      <van-grid square>
+        <van-grid-item v-for="name in avatarList" :key="name">
+          <van-image
+            @click="selectAvatar(name)"
+            round
+            width="100%"
+            height="100%"
+            fit="cover"
+            :src="'https://vincenttho.com:8001/' + name"
+          />
+        </van-grid-item>
+      </van-grid>
     </div>
-  </van-overlay>
+  </div>
 </template>
 
 <script>
@@ -46,23 +45,28 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.fixed {
+.avatar-selector {
   position: fixed;
-  z-index: 1;
-}
-.wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  top: 0;
+  left: 0;
   width: 100%;
-}
-
-.block {
-  width: 300px;
-  height: 300px;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  z-index: 9999;
+  height: 100%;
+  z-index: 1;
+  .nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 96px);
+    background-color: #fff;
+    padding: 46px 0 50px;
+    overflow: auto;
+  }
 }
 </style>
