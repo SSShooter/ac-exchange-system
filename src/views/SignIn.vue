@@ -33,8 +33,8 @@ export default {
   data() {
     return {
       info: {
-        email: '472356884@qq.com',
-        password: '1'
+        email: '',
+        password: ''
       }
     }
   },

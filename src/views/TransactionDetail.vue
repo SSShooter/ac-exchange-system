@@ -61,6 +61,7 @@ export default {
   },
   methods: {
     showIDCard(id) {
+      if (!id) return
       this.currentId = id
       this.$refs.idcard.show = true
     },
