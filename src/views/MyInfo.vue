@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding:20px 0;">
     <div class="flex">
       <van-image
         @click="selectAvatar"

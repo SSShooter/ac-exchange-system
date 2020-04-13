@@ -21,9 +21,15 @@ module.exports = {
     },
   },
   pwa: {
+    name: '未命名的动森交易系统',
     workboxOptions: {
       skipWaiting: true,
       clientsClaim: true,
+    },
+    themeColor: '#13826F',
+    msTileColor: '#FFFFFF',
+    manifestOptions: {
+      background_color: '#FFFFFF',
     },
   },
 }

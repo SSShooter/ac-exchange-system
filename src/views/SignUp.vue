@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding:20px 0;">
     <div class="flex">
       <van-image
         @click="selectAvatar"
@@ -17,6 +17,22 @@
         name="邮箱"
         label="邮箱"
         placeholder="邮箱"
+        :rules="[{ required: true, message: '必填' }]"
+      >
+        <template #button>
+          <van-button
+            size="small"
+            type="primary"
+            :loading="loading"
+            @click="sendCaptcha(info.email)"
+          >获取验证码</van-button>
+        </template>
+      </van-field>
+      <van-field
+        v-model="info.captcha"
+        name="验证码"
+        label="验证码"
+        placeholder="验证码会发送到邮箱"
         :rules="[{ required: true, message: '必填' }]"
       />
       <van-field
@@ -53,7 +69,7 @@
   </div>
 </template>
 <script>
-import { register } from '../api'
+import { register, sendCaptcha } from '../api'
 import AvatarSelector from '../components/AvatarSelector'
 import md5 from 'blueimp-md5'
 export default {
@@ -67,8 +83,10 @@ export default {
         nintendoAccount: '',
         hemisphere: '',
         fruit: '',
+        captcha: '',
         avatar: '61.png'
-      }
+      },
+      loading: false
     }
   },
   components: { AvatarSelector },
@@ -83,6 +101,17 @@ export default {
     selectAvatar() {
       console.log(this)
       this.$refs.AvatarSelector.show = true
+    },
+    async sendCaptcha(email) {
+      try {
+        if (!email) this.$notify({ type: 'warning', message: '请先输入邮箱' })
+        this.loading = true
+        await sendCaptcha(email)
+        this.$notify({ type: 'success', message: '验证码已发送' })
+        this.loading = false
+      } catch (error) {
+        this.loading = false
+      }
     }
   }
 }

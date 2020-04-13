@@ -3,12 +3,12 @@ import { Notify } from 'vant'
 import router from './router'
 axios.defaults.baseURL = process.env.VUE_APP_BASEURL
 axios.interceptors.response.use(
-  function(response) {
+  function (response) {
     // 2xx
     console.log('response', response)
     return response.data
   },
-  function(error) {
+  function (error) {
     // 非 2xx
     console.log('error', error.response)
     if (error.response.status === 401) {
@@ -73,4 +73,8 @@ export function getCurrentTransaction() {
 
 export function nextTransaction(id) {
   return axios.patch('/ac/api/transaction/turnip/nextTransaction/' + id)
+}
+
+export function sendCaptcha(email) {
+  return axios.post('/ac/api/auth/sendCaptcha', { email })
 }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="title">没有名字的动森交易系统</div>
+    <div class="title">未命名的动森交易系统</div>
     <van-form @submit="onSubmit">
       <van-field
         v-model="info.email"
