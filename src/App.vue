@@ -2,8 +2,8 @@
   <div id="app">
     <router-view class="main" />
     <van-tabbar v-model="active" @change="tabChange" class="navi">
-      <van-tabbar-item name="BuyList" icon="paid">买</van-tabbar-item>
       <van-tabbar-item name="SaleList" icon="shop">卖</van-tabbar-item>
+      <van-tabbar-item name="BuyList" icon="paid">买</van-tabbar-item>
       <van-tabbar-item name="GoodsExchange" icon="exchange">换物</van-tabbar-item>
       <van-tabbar-item name="CreateTransaction" icon="friends-o">发布</van-tabbar-item>
       <van-tabbar-item name="MyInfo" icon="user-o">我</van-tabbar-item>

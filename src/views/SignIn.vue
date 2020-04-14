@@ -47,7 +47,7 @@ export default {
       console.log(res)
       setToken(res.data.token)
       this.$store.dispatch('fetchInfo')
-      this.$router.push({ name: 'BuyList' })
+      this.$router.push({ name: 'SaleList' })
     }
   }
 }

@@ -2,16 +2,16 @@
   <van-form @submit="onSubmit">
     <div class="title">买卖信息发布</div>
     <div class="attention">
-      <div>信息发布后其他用户可以看到此信息</div>
-      <div>一位用户查看密码后信息就不会在列表出现啦</div>
-      <div>再次发布相同信息可以在我的帖子中选择重新发布</div>
-      <div>若涌入大量陌生玩家，可能是密码被泄漏，建议重新发布新交易</div>
+      <div>- 信息发布后其他用户可以看到此信息</div>
+      <div>- 一位用户查看密码后信息就不会在列表出现啦</div>
+      <div>- 再次发布相同信息可以在我的帖子中选择重新发布</div>
+      <div>- 若涌入大量陌生玩家，可能是密码被泄漏，建议重新发布新交易</div>
     </div>
     <van-field name="radio" label="类型">
       <template #input>
         <van-radio-group direction="horizontal" v-model="info.transactionType">
-          <van-radio name="BUY">买</van-radio>
           <van-radio name="SALE">卖</van-radio>
+          <van-radio name="BUY">买</van-radio>
         </van-radio-group>
       </template>
     </van-field>
@@ -45,7 +45,7 @@ export default {
         amount: '',
         tradingItems: '',
         password: '',
-        transactionType: 'BUY'
+        transactionType: 'SALE'
       }
     }
   },
