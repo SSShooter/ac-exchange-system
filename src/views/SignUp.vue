@@ -1,5 +1,6 @@
 <template>
-  <div style="padding:20px 0;">
+  <div>
+    <div class="title">用户注册</div>
     <div class="flex">
       <van-image
         @click="selectAvatar"
@@ -11,7 +12,7 @@
       />
       <div>点击选择头像</div>
     </div>
-    <van-form @submit="onSubmit">
+    <van-form @submit="onSubmit" style="padding:20px 0;">
       <van-field
         v-model="info.email"
         name="邮箱"

@@ -2,6 +2,7 @@
   <van-form @submit="onSubmit">
     <div class="title">买卖信息发布</div>
     <div class="attention">
+      <div>- 本系统暂时使用登岛密码进行交易</div>
       <div>- 信息发布后其他用户可以看到此信息</div>
       <div>- 一位用户查看密码后信息就不会在列表出现啦</div>
       <div>- 再次发布相同信息可以在我的帖子中选择重新发布</div>

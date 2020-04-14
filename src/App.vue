@@ -64,7 +64,7 @@ export default {
   font-weight: bold;
   text-align: center;
   color: #13826f;
-  padding: 50px 0 30px;
+  padding: 50px 0 10px;
 }
 
 .overlay-wrapper {
