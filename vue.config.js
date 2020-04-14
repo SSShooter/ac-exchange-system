@@ -5,9 +5,9 @@ module.exports = {
         target: 'http://122.51.47.205',
         pathRewrite: { '^/ac': 'ac-dev' },
         ws: true,
-        changeOrigin: true,
-      },
-    },
+        changeOrigin: true
+      }
+    }
   },
   css: {
     loaderOptions: {
@@ -15,21 +15,28 @@ module.exports = {
         modifyVars: {
           // overide with less vars
           'button-primary-background-color': '#13826f',
-          blue: '#13826f',
-        },
-      },
-    },
+          blue: '#13826f'
+        }
+      }
+    }
   },
   pwa: {
     name: '未命名的动森交易系统',
     workboxOptions: {
       skipWaiting: true,
-      clientsClaim: true,
+      clientsClaim: true
+    },
+    iconPaths: {
+      favicon32: 'favicon-32x32.png',
+      favicon16: 'favicon-16x16.png',
+      appleTouchIcon: 'apple-touch-icon.png',
+      maskIcon: 'safari-pinned-tab.svg',
+      msTileImage: 'mstile-150x150.png'
     },
     themeColor: '#13826F',
     msTileColor: '#FFFFFF',
     manifestOptions: {
-      background_color: '#FFFFFF',
-    },
-  },
+      background_color: '#FFFFFF'
+    }
+  }
 }
