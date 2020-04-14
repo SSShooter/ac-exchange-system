@@ -27,16 +27,28 @@ module.exports = {
       clientsClaim: true
     },
     iconPaths: {
-      favicon32: 'favicon-32x32.png',
-      favicon16: 'favicon-16x16.png',
-      appleTouchIcon: 'apple-touch-icon.png',
-      maskIcon: 'safari-pinned-tab.svg',
-      msTileImage: 'mstile-150x150.png'
+      favicon32: '/favicon-32x32.png',
+      favicon16: '/favicon-16x16.png',
+      appleTouchIcon: '/apple-touch-icon.png',
+      maskIcon: '/safari-pinned-tab.svg',
+      msTileImage: '/mstile-150x150.png'
+    },
+    manifestOptions: {
+      background_color: '#FFFFFF',
+      icons: [
+        {
+          src: './android-chrome-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: './android-chrome-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }
+      ]
     },
     themeColor: '#13826F',
-    msTileColor: '#FFFFFF',
-    manifestOptions: {
-      background_color: '#FFFFFF'
-    }
+    msTileColor: '#FFFFFF'
   }
 }
