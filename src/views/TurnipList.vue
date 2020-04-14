@@ -51,7 +51,7 @@
             入场费：
             <span class="cost">{{item.transactionInfo.tradingItems || '免费'}}</span>
           </div>
-          <div class="van-ellipsis description">{{item.transactionInfo.description}}</div>
+          <div class="description">{{item.transactionInfo.description}}</div>
         </div>
       </div>
     </van-list>

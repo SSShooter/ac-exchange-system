@@ -13,6 +13,7 @@
       <van-cell title="类型" :value="info.transactionType==='BUY'?'买入':'卖出'" />
       <van-cell :title="info.transactionType==='BUY'?'买入价格':'卖出价格'" :value="info.amount" />
       <van-cell title="入场费" :value="info.tradingItems" />
+      <van-cell title="刷新日期" :value="info.description" />
       <van-cell
         title="对方ID"
         :value="info.transactionUserId || '未进行交易'"
